@@ -12,13 +12,11 @@
 void rotr_stack(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = *head;
-	int temp1 = 0;
 
 	while (temp->next)
 		temp = temp->next;
-	temp1 = temp->n;
+	int_arg = temp->n;
 	temp->prev->next = NULL;
 	free(temp);
-	int_arg = temp1;
 	push_stack(head, line_number);
 }
