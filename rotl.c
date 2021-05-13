@@ -11,27 +11,9 @@
  */
 void rotl_stack(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp = *head, *new = NULL;
-	int temp1 = 0;
-
-	if (temp == NULL)
+	if ((*head) == NULL || head == NULL)
 		return;
-	if (temp->next->next == NULL)
-		swap(head, line_number);
-	temp1 = temp->n;
+	int_arg = (*head)->n;
 	pop_stack(head, line_number);
-	temp = *head;
-	while (temp->next)
-		temp = temp->next;
-	new = malloc(sizeof(stack_t *));
-	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		int_arg = -1;
-		return;
-	}
-	new->n = temp1;
-	temp->next = new;
-	new->prev = temp;
-	new->next = NULL;
+	push_queue(head, line_number);
 }
