@@ -14,8 +14,6 @@ void rotr_stack(stack_t **head, unsigned int line_number)
 	stack_t *temp = *head;
 	int temp1 = 0;
 
-	if (temp == NULL)
-		return;
 	while (temp->next)
 		temp = temp->next;
 	temp1 = temp->n;
