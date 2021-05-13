@@ -1,6 +1,28 @@
 #include "monty.h"
 
 /**
+ * push_handler - handles error checking for push command
+ * @arg: pointer to argument to push command
+ * @line: string read from file
+ * @fp: File stream
+ * @head: pointer to head node of stack
+ * @line_number: line number of instruction in file being read
+ *
+ * Return: no return value
+ */
+void push_handler(char *arg, char *line, FILE *fp, stack_t *head,
+		  unsigned int line_number)
+{
+	char *e = NULL;
+
+	if (arg)
+		int_arg = strtol(arg, &e, 10);
+	if (arg == NULL || arg == e)
+		fprintf(stderr, "L%d: usage: push integer\n", line_number),
+			free_stuff(fp, head, line), exit(EXIT_FAILURE);
+}
+
+/**
  * main - interpreter for monty byte code
  * @argc: number of arguments to main
  * @argv: double pointer to arguments
@@ -49,17 +71,4 @@ int main(int argc, char *argv[])
 			free_stuff(fp, head, line), exit(EXIT_FAILURE);
 	free_stuff(fp, head, line);
 	return (0);
-}
-
-
-void push_handler(char *arg, char *line, FILE *fp, stack_t *head,
-		  unsigned int line_number)
-{
-	char *e = NULL;
-
-	if (arg)
-		int_arg = strtol(arg, &e, 10);
-	if (arg == NULL || arg == e)
-		fprintf(stderr, "L%d: usage: push integer\n", line_number),
-			free_stuff(fp, head, line), exit(EXIT_FAILURE);
 }
