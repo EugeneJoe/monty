@@ -11,6 +11,9 @@
  */
 void rotl_stack(stack_t **head, unsigned int line_number)
 {
+	if ((*head) == NULL)
+		return;
+
 	int_arg = (*head)->n;
 	pop_stack(head, line_number);
 	push_queue(head, line_number);
