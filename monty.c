@@ -17,7 +17,7 @@ void push_handler(char *arg, char *line, FILE *fp, stack_t *head,
 
 	if (arg)
 		int_arg = strtol(arg, &e, 10);
-	if (arg == NULL || arg == e)
+	if (arg == NULL || arg == e || e != NULL)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number),
 			free_stuff(fp, head, line), exit(EXIT_FAILURE);
 }
